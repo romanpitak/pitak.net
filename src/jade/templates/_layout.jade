@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta( http-equiv='content-type', content='text/html', charset='UTF-8')
+        block title
+            title: != title
+        link(rel='stylesheet', href='/main.css')
+        link(rel='shortcut icon' href='/logo/32.png')
+    body
+        #wrap
+            header: .container: a(href='/', title='Home')
+                img(src='/logo/47.png', style='display: inline; margin-bottom: 0;')
+            
+            .container.content
+                block containerContent
+                    span
+            include ./_footer.jade
+
+        include ./_sidebar.jade
+
+        script(src='/sidebar.js')

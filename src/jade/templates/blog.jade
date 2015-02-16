@@ -1,0 +1,14 @@
+extends ./_layout.jade
+
+mixin article(post)
+    article
+        header: h1
+                a(href=post.url): != post.title
+        != post.perex
+        a(href=post.url): != '...read more'
+
+block containerContent
+    div
+        - each post in posts
+            +article(post)
+    
