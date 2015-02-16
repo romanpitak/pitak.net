@@ -1,0 +1,78 @@
+
+$nav-background-color: #202020
+$nav-color: rgba(255, 255, 255, 0.6)
+$nav-width: 280px
+
+=nice-left-transition
+    transition: left 0.3s ease-in-out 0s, margin 0.3s ease-in-out 0s
+
+nav#sidebar
+    background-color: $nav-background-color
+    color: $nav-color
+    top: 0
+    bottom: 0
+    left: -$nav-width
+    +nice-left-transition
+    font-size: 15px
+    line-height: 22.5px
+    font-family: $special-font-family
+    overflow-y: auto
+    position: fixed
+    width: $nav-width
+    > *
+        margin: 0
+        border: 0
+        padding: 1.5rem
+    a
+        display: block
+        text-decoration: none
+        padding-top: 0.5rem
+        padding-bottom: 0.5rem
+        border-top: 1px solid rgba(255, 255, 255, 0.1)
+        color: #fff
+        font-weight: normal
+        &:hover, .active
+            //background-color: rgba(255, 255, 255, 0.1)
+            background-color: lighten($nav-background-color, 20%)
+        &:last-of-type
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+
+#wrap
+    left: 0
+    +nice-left-transition
+    position: relative
+
+#sidebar-toggle
+
+    // position
+    position: fixed
+    top:  20px
+    left: 20px
+    +nice-left-transition
+    z-index: 10
+
+    // looks
+    display: block
+    width: 19px
+    padding: 10px 13px
+    color: #505050
+    background-color: #fff
+    border-radius: 4px
+    cursor: pointer
+
+    &:before
+        display: block
+        content: ""
+        width: 100%
+        padding-bottom: 3px
+        border-top: 9px double
+        border-bottom: 3px solid
+
+    // active (sidebar visible)
+    &:active, &.active
+        color: #fff
+        background-color: #505050
+
+    // hide the checkbox
+    input
+        display: none

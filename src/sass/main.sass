@@ -1,0 +1,129 @@
+// http://sass-lang.com/documentation/file.SASS_REFERENCE.html
+
+@import "compass/reset"
+@import "colors"
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400)
+$text-font-family: "PT Serif",Georgia,"Times New Roman",serif
+$special-font-family: "PT Sans",Helvetica,Arial,sans-serif
+
+@import "compass/css3/border-radius"
+
+=invisible-links
+    a
+        color: inherit
+        text-decoration: none
+        &:hover
+            text-decoration: underline
+
+
+body
+    font-family: $text-font-family
+    color: #515151
+    font-size: 20px
+    line-height: 30px
+    box-sizing: border-box
+
+h1, h2, h3, h4, h5
+    color: #313131
+    font-weight: 400
+    font-family: $special-font-family
+    letter-spacing: -0.025rem
+    text-rendering: optimizelegibility
+    margin-bottom: 10px
+    +invisible-links
+
+h1
+    color: #303030
+    font-size: 40px
+    line-height: 50px
+    margin-top: 26px
+
+h2
+    font-size: 30px
+    line-height: 38px
+    margin-top: 20px
+
+pre
+    background-color: #2B2B2B
+    padding: 20px
+    margin-bottom: 20px
+    +border-radius
+    code
+        font-family: Console, Monospaced, monospace
+        color: #8AE234
+        font-weight: 200
+        font-size: 16px
+        line-height: 22.5px
+
+.container
+    margin-left: auto
+    margin-right: auto
+    padding-left: 20px
+    padding-right: 20px
+    max-width: 36 * 20px
+
+.container.content
+    min-height: 700px
+
+article
+    > footer
+        margin-top: 40px
+        padding-top: 30px
+
+strong, b
+    font-weight: 600
+    color: #303030
+
+a
+    color: #268BD2
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+p
+    margin-bottom: 20px
+
+hr
+    position: relative
+    margin: 1.5rem 0px
+    border-right: 0px none
+    border-left: 0px none
+    -moz-border-top-colors: none
+    -moz-border-right-colors: none
+    -moz-border-bottom-colors: none
+    -moz-border-left-colors: none
+    border-image: none
+    border-width: 1px 0px
+    border-style: solid none
+    border-color: #EEE -moz-use-text-color #FFF
+
+#wrap
+    margin-bottom: 80px
+    >header
+        padding-top: 20px
+        padding-bottom: 20px
+        margin-bottom: 60px
+        border-bottom: 1px solid #EEE
+    >footer
+        padding-top: 20px
+        padding-bottom: 20px
+        margin-top: 60px
+        border-top: 1px solid #EEE
+        font-size: 14px
+        line-height: 1.5
+        +invisible-links
+
+blockquote
+    padding: 0.5rem 1rem
+    padding-right: 5rem
+    padding-left: 1.25rem
+    margin: 0.8rem 0px
+    color: #7A7A7A
+    border-left: 0.25rem solid #E5E5E5
+    +invisible-links
+    p
+        margin-bottom: 10px
+
+@import "sidebar"
+@import "intro"
+@import "pitak"
