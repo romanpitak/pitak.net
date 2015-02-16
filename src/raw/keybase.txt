@@ -1,0 +1,74 @@
+==================================================================
+https://keybase.io/romanpitak
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://pitak.net
+  * I am romanpitak (https://keybase.io/romanpitak) on keybase.
+  * I have a public key with fingerprint CCE0 E746 24BA 7A6A 0887  C03B FB69 C1A5 9A18 1CA6
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "cce0e74624ba7a6a0887c03bfb69c1a59a181ca6",
+            "host": "keybase.io",
+            "key_id": "fb69c1a59a181ca6",
+            "kid": "0101ae255a7e7a36d2eb73bf6ffcb1cafa6f5e70121532279a35052f2678983dadcc0a",
+            "uid": "d06e115e17cbd41605248d950d8ae800",
+            "username": "romanpitak"
+        },
+        "service": {
+            "hostname": "pitak.net",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1423231790,
+    "expire_in": 157680000,
+    "prev": "2de6c483802f2045af7d7cd76559026c6097e77661a8e8f816390869fed13255",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+which yields the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.1
+Comment: https://keybase.io/crypto
+
+yMM2AnicbZJ/TFVlGMcvyWUDFQhT2FTEk2CTX+855573nHOD1ExxE+VuUWHJj/ee
+8144Audezv2BF8SZYxnkChg5o2VtBNIP1gyBCRg/pDKJdS0YDNyiumEqgkqBqbPe
+w+y//nr3Ps/n+T7P890zuHKZISTggdLf1BC1rjlgqH+r25A5MpRUTlntspcyl1OF
+eOmxKWo+1hyaorooMyVJGGDeBBmTFfEIIiAIvARYq80KRYlGnIhogZYQpBKoArtT
+ryAyVuTESYqdxMgnV5FJ9H/4wqUEoAGNMMNxiMc8YqHMYCtP9KHNJlkJaUPQxmEe
+0AzNsQzDi4jlAMfYGMgLosDKSJYkgIice0lOBhDTNIdpXrLKJhoS1CTIIgdkAWEB
+AB10Yk1FxZjQmr0YqQ7FhQqpigSKxD2KhHUT9F0eM0vpJBW7SKlDs7vskr2IhAtc
+LodZr3J5HTpWiq25jwVyrYoqExdJgQdrTsWuUmaakJJL0RVpE8MyLM2LIIHChxyK
+hnMVneB4SAYEQG+DPUSSkTGUTAIrALIuMHHIxsu8JPOQ40TAQAkCkXjGQ0gjAQs2
+gYasCAQo2rBMs8RRSl+pRLVTZp6MifKJpFPJV5HLrWGqYqD/QKAhIMQQZHxCvwND
+SHD4f9dhdIQbWquPX3WGnzZO3an03rp7YNWmppHFnI1F45FH5VbLMyn1nitq9YpT
+IQ/83Vpcn6n288mmurzbSe+Up6864uux71wWJ0YtrvVHD9J1Ixn1qbO/jY5cyB6G
+gW9dMloq3zsSPbMXke6bnxp+uOlau5aY9YcXRQRGDtWGpnW4+7793uCrngB5C2Ff
+f5Rw1LOxeabi0b4VtY3h0988GvDFzuEt3/29q/GfzGl6pnm8O+/+tq7YeW4sYfaL
+g+NZWTUPF5iGTm6h9ofUVwef296+PbFj/yv0hT1pa9vCb7ZF/wVLW7s+PtdSc7Pv
+3CVj8runC9i5hpzF3jJ3DDNJ/eSvGfrw2cSovNboW7tey4r4fc3s9fOl7hc721bO
+m0sutndmlD3NR73s3j+Z3hI2vGO0om16jeRZXfSG64PXG4KZY/nZJ0uSezacEcfM
+waKlyXi1b/n5e+uiY3oyPr3hfTJ06PCXQfGlOyfQz76tm2N9kc31z9/o7qjf5jhx
+dyaFT4/3+xYm2o0vHL99b8cvP2afqYuoKv71YmVa1VTVXF2RevbQleSFvVu0ON/6
+qd4323bz6P4e5rL/q8TV3n1lnScrT+22tFua40f7632p18Y+KQyMUQx/Xm815AW1
+HO41pPh3lL2d4wx1VN8pSQsbndswcDlw/lhy6PtiQaO8/qxv+WcVmV0v1Z2gFi35
+DQez/wXvEKic
+=ufNJ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/romanpitak
+
+==================================================================
+
