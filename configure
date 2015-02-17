@@ -155,6 +155,7 @@ clean: clean-html
 	rm --recursive --force compass.rb
 	rm --force package.json
 	rm --force Makefile
+	@echo 'Makefile removed. Run ./configure to continue.'
 
 clean-html:
 	rm --recursive --force ${htmlDir}
