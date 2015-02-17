@@ -15,8 +15,8 @@ Preset checkbox state. Without this, the first click does not fire change state.
 
 When the sidebar is visible, any click outside of the sidebar goes to the checkbox.
 
-This function is bound to the click event listener in showSidebar()
-and unbound in hideSidebar()
+This function is bound to the `click` event listener in `showSidebar()`
+and unbound in `hideSidebar()`
 
         onPageClick = (e) ->
             target = e.target

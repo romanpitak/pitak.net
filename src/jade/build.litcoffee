@@ -50,14 +50,16 @@ Render the HTML
 
         render: ->
 
-            # Make sure we have content
+Make sure we have content
+
             if not @content?
                 if not @pageFile?
                     throw new Error 'pageFile not set'
                 location = "#{@location}/#{@pageFile}"
                 @content = fs.readFileSync location, 'utf8'
 
-            # Parse the content
+Parse the content
+
             parts = @re.exec @content
             if ! @frontMatter?
                 @frontMatter = if parts[2]? then yaml.safeLoad parts[2] else {}
@@ -67,7 +69,8 @@ Render the HTML
                     filename: @pageFile
                     pretty: true
 
-            # Parse the template
+Parse the template
+
             template = new Template @template or null
             @html = template.getHtml this
 
