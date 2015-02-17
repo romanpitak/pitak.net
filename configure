@@ -140,8 +140,8 @@ node_modules: package.json
 pages: node_modules src/jade/pages/*
 	${coffeeBin} ${jadeDir}/build.litcoffee
 
-css: ${sassDir}/*
-	${compassBin} compile --config compass.rb
+css: compass.rb ${sassDir}/*
+	${compassBin} compile --config $<
 
 js: ${coffeeDir}/*
 	${coffeeBin} --compile --no-header --output ${jsDir} ${coffeeDir}
