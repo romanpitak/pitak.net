@@ -124,37 +124,35 @@ cat > Makefile <<MAKEFILE
 
 # ${doNotEditNotice}
 
-.PHONY: all raw css js pages clean clean-html
+.PHONY: all css js pages clean clean-html
 
-all: ${htmlDir}
+all: clean-html ${htmlDir} css js pages
 
-${htmlDir}: raw css js pages
-
-raw: ${rawDir}
-	mkdir -p ${htmlDir}
-	cp -r $</* ${htmlDir}
+${htmlDir}: ${rawDir}
+	mkdir --parents \$@
+	cp --recursive $</* \$@
 
 node_modules: package.json
 	${npmBin} install
 
-pages: node_modules src/jade/pages/*
+pages: node_modules
 	${coffeeBin} ${jadeDir}/build.litcoffee
 
-css: compass.rb ${sassDir}/*
+css: compass.rb
 	${compassBin} compile --config $<
 
 js: ${coffeeDir}/*
 	${coffeeBin} --compile --no-header --output ${jsDir} ${coffeeDir}
 
 clean: clean-html
-	rm -rf node_modules
-	rm -rf .sass-cache
-	rm -f "${jadeDir}/config.litcoffee"
-	rm -f compass.rb
-	rm -f package.json
-	rm -f Makefile
+	rm --recursive --force node_modules
+	rm --recursive --force .sass-cache
+	rm --recursive --force "${jadeDir}/config.litcoffee"
+	rm --recursive --force compass.rb
+	rm --force package.json
+	rm --force Makefile
 
 clean-html:
-	rm -rf ${htmlDir}
+	rm --recursive --force ${htmlDir}
 
 MAKEFILE
