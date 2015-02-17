@@ -100,7 +100,7 @@ sass_dir = "${sassDir}"
 # - :compact
 # - :compressed
 #
-output_style = :nested
+output_style = :compressed
 
 sourcemap = false
 disable_warnings = false
