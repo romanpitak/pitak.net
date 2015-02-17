@@ -20,7 +20,7 @@ They are written in clean jade and can extend and include other templates.
         constructor: (@name = 'page', @location = config.templatesPath) ->
         getHtml: (options) ->
             cwd = process.cwd()
-            options.pretty = true
+            options.pretty = config.pretty
             options.filename = @name
             try
                 process.chdir @location
@@ -67,7 +67,7 @@ Parse the content
             if ! @containerContent?
                 @containerContent = jade.render parts[3] or '',
                     filename: @pageFile
-                    pretty: true
+                    pretty: config.pretty
 
 Parse the template
 

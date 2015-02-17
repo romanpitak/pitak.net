@@ -40,6 +40,7 @@ cat > "${jadeDir}/config.litcoffee" <<SRC_JADE_CONFIG_LITCOFFEE
         htmlPath: '${htmlPath}'
         pagesPath: '${pagesPath}'
         templatesPath: '${templatesPath}'
+        pretty: false
 
 SRC_JADE_CONFIG_LITCOFFEE
 
