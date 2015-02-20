@@ -1,0 +1,57 @@
+---
+template: post
+title:  "Checking for primes with regular expressions?"
+url: "/blog/2015/02/20/regexp-prime-checker"
+author: "Roman Piták"
+last_modified_at: 2014-02-20
+perex: |
+    Regular expressions may not be good for parsing nested structures (html),
+    but when it comes to finding prime numbers, they sure are also not really good.
+    Luckily, this doesn't stop enthusiasts form trying
+---
+p.
+    About a week ago I found an 
+    #[a(href='http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/' target='_blank') interesting article]
+    that describes the the use of a regexp to check for primes in Ruby. It refers to a
+    #[a(href='http://montreal.pm.org/tech/neil_kandalgaonkar.shtml' target='_blank') Perl tricks]
+    page which lists 
+    #[a(href='http://abigail.be/' target='_blank') Abigail] as the original source.
+    So no, this is not from my own head, but since I advocate 
+    #[strong sensible use]
+    of regular expressions#[sup #[a(href="#note1") *]], I decided to give it a go. 
+    I first rewrote the original one-liner to CoffeeScript,
+    which proved to be fun on it's own,
+    and got this:
+pre.pitak: code.
+    isPrime = (n) -> ! #[span.warning /^x?$|^(xx+?)\1+$/].test (Array n+1).join 'x'
+:markdown
+    `(Array n+1).join 'x'` creates a string containing n repetitions of 'x'.
+    The string is then tested agains the regexp.
+    Since the regexp actually matches non-primes we have to negate the
+    result with `!` before returning it.
+
+    The regular expression itself consists of two parts joined by a pipe.
+    Each part matches a full string from start to finish `^$`.
+    When you take away the syntactic sugar you are left with 
+    `x?` and `(xx+?)\1+`.
+    
+    `x?` matches 'x' or an empty string '' to handle border condtions of 1 and 0.
+    
+    ## (xx+?)\1+
+
+    This is where it gets interesting. 
+    `xx+` matches two or more repetitions of 'x'. 
+    The questionmark `xx+?` makes the plus 
+    [not greedy](http://en.wikipedia.org/wiki/Greedy_algorithm)
+    so that we start by testing small numbers first 2, 3 ... ('xx', 'xxx' ...),
+    and the parenteses `(xx+?)` remember the matched number for later use.
+    Then the `\1+` matches the previously remembered string one or more times. 
+    If it succeeds, it means that the string consists of two or more 
+    repetitions of a substring and is therefore not a prime.
+    
+    ## So what?
+    
+    It works. That's about it, but it's fun!
+    
+    ***
+p #[a#note1] * No, I don't consider this to be a sensible use of regular expressions. 
