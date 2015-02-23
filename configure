@@ -58,7 +58,7 @@ templatesPath="${rootDir}/${jadeDir}/templates"
 htmlPath="${rootDir}/${htmlDir}"
 
 # bin configuration
-coffeeBin='coffee'
+coffeeBin='./node_modules/.bin/coffee'
 compassBin='compass'
 npmBin='npm'
 minifyBin='./node_modules/.bin/minify'
