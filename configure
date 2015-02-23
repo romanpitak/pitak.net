@@ -44,6 +44,10 @@ htmlDir='html'
 cssDir="${htmlDir}"
 jsDir="${htmlDir}"
 
+# Nginx coinfiguration
+serverName='localhost'
+serverPort=8015
+
 # sources configuration
 srcDir='src'
 coffeeDir="${srcDir}/coffee"
@@ -104,6 +108,7 @@ cat > .gitignore <<GITIGNORE
 .sass-cache
 /${htmlDir}
 /${jadeDir}/config.litcoffee
+/nginx.conf
 !.gitignore
 GITIGNORE
 
@@ -161,6 +166,26 @@ preferred_syntax = :sass
 # fonts_dir
 
 COMPASS_RB
+
+echo "Writing nginx.conf"
+cat > nginx.conf <<NGINX_CONF
+
+# ${doNotEditNotice}
+
+server {
+	listen ${serverPort};
+
+	root ${rootDir}/${htmlDir};
+	index index.html;
+
+	server_name ${serverName};
+
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+}
+
+NGINX_CONF
 
 echo "Writing Makefile"
 cat > Makefile <<MAKEFILE
