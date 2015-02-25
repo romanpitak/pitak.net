@@ -180,6 +180,8 @@ server {
 
     server_name ${serverName};
 
+    error_page 404 /404/index.html;
+
     location / {
         try_files \$uri \$uri/ =404;
     }
