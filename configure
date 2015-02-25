@@ -173,16 +173,16 @@ cat > nginx.conf <<NGINX_CONF
 # ${doNotEditNotice}
 
 server {
-	listen ${serverPort};
+    listen ${serverPort};
 
-	root ${rootDir}/${htmlDir};
-	index index.html;
+    root ${rootDir}/${htmlDir};
+    index index.html;
 
-	server_name ${serverName};
+    server_name ${serverName};
 
-	location / {
-		try_files \$uri \$uri/ =404;
-	}
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
 }
 
 NGINX_CONF
