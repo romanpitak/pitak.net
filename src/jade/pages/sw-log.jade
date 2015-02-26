@@ -1,0 +1,107 @@
+---
+template: page
+title: "Software log"
+url: "/sw.log"
+---
+:markdown
+    # My sw logs
+    
+    
+    
+    ## NVM
+    
+    Checkout the git repo into `~/.nvm`:
+    
+        git clone https://github.com/creationix/nvm.git ~/.nvm
+        
+    Set to latest version
+        
+        cd ~/.nvm
+        git checkout $(git describe --abbrev=0 --tags)
+        
+    Install some `node`
+    
+        source ~/.nvm/nvm.sh
+        nvm install 0.10
+        nvm install 0.11
+        nvm install 0.12
+        nvm use 0.12
+        node --version
+        
+    Load `nvm` in `~/.bashrc`
+    
+        # NVM
+        if test -d "${HOME}/.nvm"; then
+            if test -f "${HOME}/.nvm/nvm.sh"; then
+                . "${HOME}/.nvm/nvm.sh"
+            fi
+            if test -r "${HOME}/.nvm/bash_completion"; then
+                . "${HOME}/.nvm/bash_completion"
+            fi
+            nvm use 0.12
+        fi
+
+    ## Atom
+
+    Prepare sources
+
+        git clone https://github.com/atom/atom "${HOME}/var/src/atom"
+        cd "${HOME}/var/src/atom"
+        git fetch -p
+        git checkout $(git describe --tags \
+            $(git rev-list --tags --max-count=1))
+
+    Build
+
+        export TMPDIR="${HOME}/var/tmp/atom"
+        script/build
+
+    Install
+
+        script/grunt install --install-dir "${HOME}/opt/atom"
+
+        cd "${HOME}/bin"
+        ln -s ../opt/atom/bin/atom atom
+        ln -s ../opt/atom/bin/apm apm
+
+    Cleanup
+
+        rm -rf "${HOME}/var/src/atom"
+        rm -rf "${HOME}/var/tmp/atom"
+        cd
+
+
+    ## RVM
+
+        sudo apt-get install libreadline6-dev libyaml-dev \
+            sqlite3 libgdbm-dev libncurses5-dev libffi-dev \
+            --assume-yes
+        gpg --keyserver hkp://keys.gnupg.net \
+            --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+        curl -L https://get.rvm.io | bash -s stable --autolibs=enabled
+        
+    ### Further setup
+    
+    The `rvm` install script loads from `~/.profile` by default. 
+    Move it to `~/.bashrc`.
+    
+    Remove from `~/.profile`:
+    
+        export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+        [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+    Add to `~/.bashrc`
+    
+        TODO
+
+    ### Ruby
+
+        rvm list known
+        rvm install ruby
+        rvm docs generate-ri # generate documentation
+
+
+    ### Gems
+
+        gem update --system
+        gem install compass
