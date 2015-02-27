@@ -68,7 +68,6 @@ url: "/setup.log"
         rm -rf "${HOME}/var/tmp/atom"
         cd
 
-
     ## RVM
 
         sudo apt-get install libreadline6-dev libyaml-dev \
@@ -78,26 +77,23 @@ url: "/setup.log"
             --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
         curl -L https://get.rvm.io | bash -s stable --autolibs=enabled
         
-    ### Further setup
+    ### Further setup [optional]
     
-    The `rvm` install script loads from `~/.profile` by default. 
-    Move it to `~/.bashrc`.
-    
-    Remove from `~/.profile`:
+    The `rvm` install script adds `rvm` loading lines into 
+    `~/.profile` and `~/.bash_profile` by default. 
     
         export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+        
         [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-    Add to `~/.bashrc`
     
-        TODO
+    Depending on your current init files settings,
+    you may want to have a look at that. 
 
     ### Ruby
 
         rvm list known
         rvm install ruby
         rvm docs generate-ri # generate documentation
-
 
     ### Gems
 
