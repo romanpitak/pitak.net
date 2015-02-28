@@ -26,6 +26,7 @@ we have to use `child_process.execSync`.
 This requires Node >= 0.11.12
 
 Further reading:
+
 - [Marked overriding-renderer-methods](https://www.npmjs.com/package/marked#overriding-renderer-methods)
 - [Node child_process.execSync](http://nodejs.org/docs/v0.12.0/api/child_process.html#child_process_child_process_execsync_command_options)
 - [Jade How to define/install custom filter?](https://github.com/jadejs/jade/issues/1055)
