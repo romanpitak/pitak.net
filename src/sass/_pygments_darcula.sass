@@ -1,0 +1,223 @@
+// Darcula theme stylesheets for Pygments
+
+// mixins extracted from
+// plugins/textmate/lib/themes/Darcula.tmTheme
+
+//  SASS                                CONTEXT
+// ----------------------------------------------------------------------
+
+//                                      base
+=darcula-source
+    background: #2C2C2C
+    color: #E6E1DC
+//                                      comment
+=darcula-comment
+    font-style: italic
+    color: #BC9458
+//                                      keyword, storage
+=darcula-keyword
+    color: #CC7833
+//                                      entity.name.function,
+//                                      keyword.other.name-of-parameter.objc
+=darcula-function-definition
+    color: #FFC66D
+//                                      entity.name
+=darcula-class-definition
+    color: #FFFFFF
+//                                      constant.numeric
+=darcula-number
+    color: #A5C261
+//                                      variable.language, variable.other
+=darcula-variable
+    color: #D0D0FF
+//                                      constant
+=darcula-constant
+    color: #6D9CBE
+//                                      variable.other.constant
+=darcula-constant-other-variable
+    color: #DA4939
+//                                      constant.language
+=darcula-constant-built-in
+    color: #6E9CBE
+//                                      string
+=darcula-string
+    color: #A5C261
+//                                      support.function
+=darcula-library-function
+    color: #DA4939
+//                                      support.type
+=darcula-library-type
+    color: #6E9CBE
+//                                      support.constant
+=darcula-library-constant
+    color: #A5C261
+//                                      meta.tag, declaration.tag,
+//                                      entity.name.tag,
+//                                      entity.other.attribute-name
+=darcula-markup-tag
+    color: #E8BF6A
+//                                      invalid
+=darcula-invalid
+    background: #990000
+    color: #FFFFFF
+//                                      constant.character.escaped,
+//                                      constant.character.escape,
+//                                      string source, string source.ruby
+=darcula-string-interpolation
+    color: #519F50
+//                                      markup.inserted
+=darcula-diff-add
+    background: #144212
+    color: #E6E1DC
+//                                      markup.deleted
+=darcula-diff-remove
+    background: #660000
+    color: #E6E1DC
+//                                      meta.diff.header, meta.separator.diff,
+//                                      meta.diff.index, meta.diff.range
+=darcula-diff-header
+    background: #2F33AB
+
+// TODO
+// temporary mixin that will alert me
+// when I encounter an undefined class
+
+=pygments-todo
+    background: green
+    color: red
+
+// PYGMENTS
+
+//  SASS                                COMMENT
+// ----------------------------------------------------------------------
+
+.highlight,
+    +darcula-source
+
+    margin-bottom: 16px
+    padding: 16px
+    +border-radius
+
+    overflow: auto
+    //                                  Comment
+    .c
+        +darcula-comment
+    //                                  Error
+    .err
+        +darcula-invalid
+    //                                  Keyword
+    .k
+        +darcula-keyword
+    //                                  Literal
+    .l
+        +pygments-todo
+    //                                  Name
+    .n
+        +pygments-todo
+    //                                  Operator
+    .o
+        color: inherit
+    //                                  Punctuation
+    .p
+        color: inherit
+    //                                  Comment.Multiline
+    //                                  Comment.Preproc
+    //                                  Comment.Single
+    //                                  Comment.Special
+    .cm, .cp, .c1, .cs
+        +darcula-comment
+    //                                  Generic.Emph
+    .ge
+        font-style: italic
+    //                                  Generic.Strong
+    .gs
+        font-weight: bold
+    //                                  Keyword.Constant
+    //                                  Keyword.Declaration
+    //                                  Keyword.Namespace
+    //                                  Keyword.Pseudo
+    //                                  Keyword.Reserved
+    //                                  Keyword.Type
+    .kc, .kd, .kn, .kp, .kr, .kt
+        +darcula-keyword
+    //                                  Literal.Date
+    .ld
+        +pygments-todo
+    //                                  Literal.Number
+    .m
+        +darcula-number
+    //                                  Literal.String
+    .s
+        +darcula-string
+    //                                  Name.Attribute
+    //                                  Name.Builtin
+    //                                  Name.Class
+    .na, .nb, .nc
+        +darcula-class-definition
+    //                                  Name.Constant
+    .no
+        +pygments-todo
+    //                                  Name.Decorator
+    .nd
+        +pygments-todo
+    //                                  Name.Entity
+    .ni
+        +pygments-todo
+    //                                  Name.Exception
+    //                                  Name.Function
+    .ne, .nf
+        +darcula-function-definition
+    //                                  Name.Label
+    //                                  Name.Namespace
+    .nl, .nn
+        +pygments-todo
+    //                                  Name.Other
+    .nx
+        +darcula-class-definition
+    //                                  Name.Property
+    .py
+        +pygments-todo
+    //                                  Name.Tag
+    .nt
+        +pygments-todo
+    //                                  Name.Variable
+    .nv
+        +darcula-variable
+    //                                  Operator.Word
+    .ow
+        +pygments-todo
+    //                                  Text.Whitespace
+    .w
+        color: inherit
+    //                                  Literal.Number.Float
+    //                                  Literal.Number.Hex
+    //                                  Literal.Number.Integer
+    //                                  Literal.Number.Oct
+    .mf, .mh, .mi, .mo
+        +darcula-number
+    //                                  Literal.String.Backtick
+    //                                  Literal.String.Char
+    //                                  Literal.String.Doc
+    //                                  Literal.String.Double
+    .sb, .sc, .sd, .s2
+        +darcula-string
+    //                                  Literal.String.Escape
+    .se
+        +darcula-string
+    //                                  Literal.String.Heredoc
+    //                                  Literal.String.Interpol
+    //                                  Literal.String.Other
+    //                                  Literal.String.Regex
+    //                                  Literal.String.Single
+    //                                  Literal.String.Symbol
+    .sh, .si, .sx, .sr, .s1, .ss
+        +darcula-string
+    //                                  Name.Builtin.Pseudo
+    //                                  Name.Variable.Class
+    //                                  Name.Variable.Global
+    //                                  Name.Variable.Instance
+    .bp, .vc, .vg, .vi
+        +pygments-todo
+    //                                  Literal.Number.Integer.Long
+    .il
+        +pygments-todo
