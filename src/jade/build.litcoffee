@@ -10,6 +10,14 @@ Load modules
     jade = require 'jade'
     yaml = require 'js-yaml'
     config = require './config'
+    execSync = (require 'child_process').execSync
+
+Add custom Pygments filters to Jade
+
+    jade.filters.bashcode = (text) ->
+        result = execSync 'pygmentize -l bash -f html',
+            input: text
+        return result.toString()
 
 ### Template loader
 
