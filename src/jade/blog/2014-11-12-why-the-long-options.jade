@@ -21,15 +21,14 @@ p.
     long switches are like helpful little inline documentation.
     They make me a bit less pissed at my past self for writing things like this:
 
-    <pre class="pitak"><code><span class="comment"
-    >###################################################
+    ```bash
+    ###################################################
     #     _____    #
     # ^..^     \9  # WARNING - following source code
     # (oo)_____/   #           may harm your eyes
     #    WW  WW    #
     ###################################################
-    </span></code></pre>
-
+    ```
 
     ## Leave better code for "generations" to come
 
@@ -54,20 +53,20 @@ a(href='http://xkcd.com/1168/', target='_blank'): img(src='http://imgs.xkcd.com/
 
     Consider this piece of code:
 
-    <pre class="pitak"><code><span class="user-host">roman@u310 </span><span
-    class="path">~ $ </span><span class="function">git</span> config --global core.pager <span 
-    class="warning">"less -FRSX"</span></code></pre>
-
+    ```bash
+    git config --global core.pager "less -FRSX"
+    ```
+    
     My first reaction was `man ls` and a rewrite to:
 
-    <pre class="pitak"><code><span class="user-host">roman@u310 </span><span
-    class="path">~ $ </span><span class="function">git</span> config --global core.pager <span
-    class="warning">\</span><span class="string">
-        "less <span class="warning">\</span>
-        --quit-if-one-screen <span class="warning">\</span>
-        --RAW-CONTROL-CHARS <span class="warning">\</span>
-        --chop-long-lines <span class="warning">\</span>
-        --no-init"</span></code></pre>
+    ```bash
+    git config --global core.pager \
+        "less \
+        --quit-if-one-screen \
+        --RAW-CONTROL-CHARS \
+        --chop-long-lines \
+        --no-init"
+    ```
 
     Now, whenever I have to revise my `.gitconfig`, I can clearly see (or at least I have a faint idea of) what I was trying to achieve.
 
@@ -83,13 +82,13 @@ a(href='http://xkcd.com/1168/', target='_blank'): img(src='http://imgs.xkcd.com/
 
     Some (although admittedly not many) switches are only available in the long form.
 
-    <pre class="pitak"><code><span class="user-host">roman@u310 </span><span
-    class="path">~ $ </span><span class="function">alias</span> ls=<span
-    class="string">"ls <span class="warning">\</span>
-        --color=auto <span class="warning">\</span>
-        --time-style=\"+%Y-%m-%d %H:%M:%S\" <span class="warning">\</span>
-        --human-readable"</span></code></pre>
-
+    ```bash
+    alias ls="ls \
+        --color=auto \
+        --time-style=\"+%Y-%m-%d %H:%M:%S\" \
+        --human-readable"
+    ```
+    
     In the above example, the switches `--color` and `--time-style` are only available in the long form because they are intended to be used in scripts.
 
     ## Maintain laziness

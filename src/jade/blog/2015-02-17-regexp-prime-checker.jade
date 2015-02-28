@@ -22,9 +22,10 @@ p.
     I first rewrote the original one-liner to CoffeeScript,
     which proved to be fun on it's own,
     and got this:
-pre.pitak: code.
-    isPrime = (n) -> ! #[span.warning /^x?$|^(xx+?)\1+$/].test (Array n+1).join 'x'
 :markdown
+    ```coffeescript
+    isPrime = (n) -> ! /^x?$|^(xx+?)\1+$/.test (Array n+1).join 'x'
+    ```
     `(Array n+1).join 'x'` creates a string containing n repetitions of 'x'.
     The string is then tested agains the regexp.
     Since the regexp actually matches non-primes we have to negate the

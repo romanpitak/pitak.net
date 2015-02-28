@@ -15,15 +15,17 @@ perex: |
     [Download P4Merge](http://www.perforce.com/downloads/Perforce/20-User?qt-perforce_downloads_step_3=1#product-10),
     extract the archive and create a link (somewhere in your $PATH).
 
-        $ sudo tar \
-            --no-same-owner \
-            --extract --ungzip \
-            --file ~/Downloads/p4v.tgz \
-            --directory /opt
-        $ sudo ln \
-            --symbolic \
-            /opt/p4v-2014.2.951414/bin/p4merge \
-            /usr/bin/p4merge
+    ```bash
+    sudo tar \
+        --no-same-owner \
+        --extract --ungzip \
+        --file ~/Downloads/p4v.tgz \
+        --directory /opt
+    sudo ln \
+        --symbolic \
+        /opt/p4v-2014.2.951414/bin/p4merge \
+        /usr/bin/p4merge
+    ```
 
     `--no-same-owner` ensures the files are owned by the current user (root) and not by whomever created the original archive.
 
@@ -33,20 +35,24 @@ perex: |
 
     Edit your `~/.gitconfig` file:
 
-        [merge]
-                tool = p4merge
-        [mergetool "p4merge"]
-                cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-                trustExitCode = true
+    ```
+    [merge]
+            tool = p4merge
+    [mergetool "p4merge"]
+            cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+            trustExitCode = true
+    ```
 
     ## Difftool
 
     Edit your `~/.gitconfig` file:
 
-        [diff]
-                tool = p4merge
-        [difftool "p4merge"]
-                cmd = p4merge "$LOCAL" "$REMOTE"
+    ```
+    [diff]
+            tool = p4merge
+    [difftool "p4merge"]
+            cmd = p4merge "$LOCAL" "$REMOTE"
+    ```
 
     ## Nice to have
 
@@ -54,9 +60,11 @@ perex: |
 
     Edit your `~/.gitconfig` file:
 
-        [mergetool]
-                prompt = false
-                keepBackup = false
-                keepTemporaries = false
-        [difftool]
-                prompt = false
+    ```text
+    [mergetool]
+            prompt = false
+            keepBackup = false
+            keepTemporaries = false
+    [difftool]
+            prompt = false
+    ```

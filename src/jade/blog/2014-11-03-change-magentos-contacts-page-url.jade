@@ -19,30 +19,34 @@ perex: |
 
     `/app/etc/Zzz_ContactsPageUrl.xml`
 
-        <?xml version="1.0" encoding="UTF-8"?>
-        <config>
-            <modules>
-                <Zzz_ContactsPageUrl>
-                    <active>true</active>
-                    <codePool>local</codePool>
-                </Zzz_ContactsPageUrl>
-            </modules>
-        </config>
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <config>
+        <modules>
+            <Zzz_ContactsPageUrl>
+                <active>true</active>
+                <codePool>local</codePool>
+            </Zzz_ContactsPageUrl>
+        </modules>
+    </config>
+    ```
 
     and `/app/code/local/Zzz/ContactsPageUrl/etc/config.xml`
 
-        <?xml version="1.0"?>
-        <config>
-            <frontend>
-                <routers>
-                    <contacts>
-                        <args>
-                            <frontName>contact-us.html</frontName>
-                        </args>
-                    </contacts>
-                </routers>
-            </frontend>
-        </config>
+    ```xml
+    <?xml version="1.0"?>
+    <config>
+        <frontend>
+            <routers>
+                <contacts>
+                    <args>
+                        <frontName>contact-us.html</frontName>
+                    </args>
+                </contacts>
+            </routers>
+        </frontend>
+    </config>
+    ```
 
     The vital part here is the "vendor name", `Zzz`. Since Magento loads the
     modules alphabetically, modules from the Zzz vendor will be loaded last. This
