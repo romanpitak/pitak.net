@@ -129,6 +129,9 @@ cat > package.json <<PACKAGE_JSON
         "mkdirp": "*",
         "minify": "*"
     },
+    "engines" : {
+        "node" : ">=0.11.12"
+    },
     "private": true
 }
 PACKAGE_JSON
