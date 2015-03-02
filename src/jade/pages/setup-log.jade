@@ -105,3 +105,16 @@ url: "/setup.log"
 
         gem update --system
         gem install compass
+        
+    ## `meteor`
+    
+    Unfortunatelly `meteor` needs to install sources into `~/.meteor`.
+    It provides a good install script,
+    but it installs itself into PATH in `/usr/local`.
+    We need to change the `PREFIX` variable to install into `~/bin`.
+    
+    ```bash
+    curl 'https://install.meteor.com/' | \
+        sed -e 's/^PREFIX=.*/PREFIX="${HOME}"/' | \
+        bash
+    ```
