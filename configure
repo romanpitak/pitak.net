@@ -130,7 +130,8 @@ cat > package.json <<PACKAGE_JSON
         "minify": "*"
     },
     "engines" : {
-        "node" : ">=0.11.12"
+        "node": ">=0.11.12",
+        "iojs": ">=1.0.0"
     },
     "private": true
 }
