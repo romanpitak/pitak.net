@@ -1,0 +1,197 @@
+---
+template: post
+title: "GitHub style Pygments syntax highlighting in Jade"
+url: "/blog/2015/03/01/jade-with-pygments"
+author: "Roman Piták"
+last_modified_at: 2014-03-01
+perex: |
+    Since I&nbsp;started blogging a&nbsp;few&nbsp;months&nbsp;ago,
+    I&nbsp;fought with syntax highlighting on&nbsp;every step.
+    I&nbsp;played around with manually highlighting my&nbsp;code for&nbsp;best results,
+    but I&nbsp;very soon realized I&nbsp;simply do&nbsp;not have the&nbsp;patience
+---
+:markdown
+    Since I&nbsp;started blogging a&nbsp;few&nbsp;months&nbsp;ago,
+    I&nbsp;fought with syntax highlighting on&nbsp;every step.
+    I&nbsp;played around with manually highlighting my&nbsp;code for&nbsp;best results,
+    but I&nbsp;very soon realized I&nbsp;simply do&nbsp;not have the&nbsp;patience.
+    The&nbsp;need for a&nbsp;syntax highlighter was born. 
+    I&nbsp;believe in&nbsp;rendering as&nbsp;much as&nbsp;possible
+    just once and&nbsp;server&nbsp;side.
+    After some poking around I&nbsp;went with the&nbsp;Pygments syntax highlighter.
+    If it's good enough for GitHub,
+    it must be good enough for me...
+    
+    My original idea was to create a custom filter for Jade
+    that would accept the language as an argument.
+    This proved unpractical since  Jade filters don't support arguments
+    and it still left the markdown fenced code blocks plain. 
+    Thus an easier solution was born. 
+    Highlight the fenced blocks and use the `:markdown` filter.
+    
+    ## The code
+    
+    Jade lets you specify (override) the markdown parser easily
+    and the `marked` parser supports fenced code blocks,
+    but a bit of tinkering is still needed to add the Pygments.
+    
+    ```coffee-script
+    jade = require 'jade'
+    marked = require 'marked'
+    {execSync} = require 'child_process' # node >= 0.11.12
+
+    renderer = new marked.Renderer
+    renderer.code = (code, lexer = 'text') ->
+        result = execSync "pygmentize -l \#{lexer} -f html",
+            input: code
+        return result.toString()
+
+    marked.setOptions
+        renderer: renderer
+
+    jade.filters.markdown = marked
+    ```
+    
+    `marked` exposes the&nbsp;`renderer.code` function 
+    that handles the&nbsp;markdown code blocks.
+    The default implementation calls `renderer.options.highlight`
+    if the&nbsp;fenced code block specifies a&nbsp;language,
+    but it also (correctly) wraps the&nbsp;result in `<pre><code>`.
+    Since the Pygments highlighter
+    already wraps its output in `<div class="highlight"><pre>`,
+    it is not enough to override the&nbsp;`renderer.options.highlight`.
+    We must override the&nbsp;`renderer.code` function instead
+    to get rid of the&nbsp;clutter.
+    
+    To actually highlight the code, I use the `pygmentize` command line utility.
+    Since Jade doesn't support async filters, 
+    we are limited to synchronous calls
+    and must use the `child_process.execSync` to call `pygmentize`.
+    
+    With `marked.setOptions` we override the renderer to our custom one
+    and then override the Jade markdown filter
+    to use our customized `marked` instance.
+    
+    ## Usage
+    
+    Whenever you need a highlighted code block in jade, 
+    use the `:markdown` filter with a fenced code block.
+    
+p Highlighting #[code CoffeeScript]#[sup #[a(href="#note-coffee") *]]:
+#example-1
+    ul
+        li: a(href='#example-1-jade') Jade
+        li: a(href='#example-1-out') output
+        li: a(href='#example-1-html') html
+    #example-1-jade
+        .highlight
+            pre
+                span.nt :markdown
+                br
+                span.nf     ```coffee-script
+                br
+                span.nv     foods =
+                span.p  [
+                span.s 'broccoli'
+                span.p ,
+                span.s  'spinach'
+                span.p ,
+                span.s  'chocolate'
+                span.p ]
+                br
+                span.nx     eat
+                span.nx  food
+                span.k  for
+                span.nx  food
+                span.k  in
+                span.nx  foods
+                span.k  when
+                span.nx  food
+                span.o  isnt
+                span.s  'chocolate'
+                br
+                span.nf     ```
+    #example-1-out
+        :markdown
+            ```coffee-script
+            foods = ['broccoli', 'spinach', 'chocolate']
+            eat food for food in foods when food isnt 'chocolate'
+            ```
+    #example-1-html
+        :markdown
+            ```html
+            <div class="highlight"><pre><span class="nv">foods = </span><span class="p">[</span><span class="s">'broccoli'</span><span class="p">,</span> <span class="s">'spinach'</span><span class="p">,</span> <span class="s">'chocolate'</span><span class="p">]</span>
+            <span class="nx">eat</span> <span class="nx">food</span> <span class="k">for</span> <span class="nx">food</span> <span class="nx">infoods</span> <span class="nx">whenfoodisnt</span> <span class="s">'chocolate'</span>
+            </pre></div>
+            ```
+p     Highlighting #[code Bash]:
+#example-2
+    ul
+        li: a(href='#example-2-jade') Jade
+        li: a(href='#example-2-out') output
+        li: a(href='#example-2-html') html
+    #example-2-jade
+        .highlight
+            pre
+                span.nt :markdown
+                br
+                span.nf     ```bash
+                br
+                span.k     if
+                span.nb  test
+                |  -r
+                span.s2  "${HOME}/.profile"
+                | ;
+                span.k  then
+                br
+                span.nb         source
+                span.s2  "${HOME}/.profile"
+                br
+                span.k     fi
+                br
+                span.nf     ```
+
+
+    #example-2-out
+        :markdown
+            ```bash
+            if test -r "${HOME}/.profile"; then
+                source "${HOME}/.profile"
+            fi
+            ```
+    #example-2-html
+        :markdown
+            ```html
+            <div class="highlight"><pre><span class="k">if </span><span class="nb">test</span> -r <span class="s2">"${HOME}/.profile"</span>; <span class="k">then</span>
+            <span class="k">    </span><span class="nb">source</span> <span class="s2">"${HOME}/.profile"</span>
+            <span class="k">fi</span>
+            </pre></div>
+            ```
+h2 Further reading
+ul
+    li: a(href='http://pygments.org/docs/lexers/', target='_blank').
+        A list of Pygments lexers.
+    li: a(href='https://www.npmjs.com/package/marked#overriding-renderer-methods', target='_blank').
+        Overriding renderer methods in the #[code marked] parser.
+    li: a(href='http://nodejs.org/docs/v0.12.0/api/child_process.html#child_process_child_process_execsync_command_options', target='_blank').
+        Node.js #[code child_process.execSync] documentation.
+    li: a(href='https://github.com/jadejs/jade/issues/1055', target='_blank').
+        How to define/install a custom filter in Jade. 
+
+footer
+    p#note-coffee
+        :markdown
+             \* When highlighting `CoffeeScript` in fenced blocks
+             in `Jade` remember to escape variables expansion in strings.
+             Since Jade uses the same syntax, 
+             undefined variables may raise exceptions
+             or go unnoticed with an empty output.
+             Always change `"\#{coffeeVariable}"` to `"\\#{coffeeVariable}"`.
+         
+
+script(src='/jquery-2.1.3.js')
+script(src='/jquery-ui-1.11.3.custom.js')
+script
+    :coffeescript
+        jQuery('#example-1').tabs()
+        jQuery('#example-2').tabs()
