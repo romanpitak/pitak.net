@@ -52,7 +52,7 @@ serverPort=8015
 srcDir='src'
 coffeeDir="${srcDir}/coffee"
 jadeDir="${srcDir}/jade"
-rawDir="${srcDir}/raw"
+assetsDir="${srcDir}/assets"
 sassDir="${srcDir}/sass"
 
 # for the jade builder
@@ -201,7 +201,7 @@ cat > Makefile <<MAKEFILE
 
 all: clean-html ${htmlDir} css ${jsDir}/main.js pages
 
-${htmlDir}: ${rawDir}
+${htmlDir}: ${assetsDir}
 	mkdir --parents \$@
 	cp --recursive $</* \$@
 
