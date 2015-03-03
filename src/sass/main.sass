@@ -1,11 +1,9 @@
 // http://sass-lang.com/documentation/file.SASS_REFERENCE.html
 
 @import "compass/reset"
-@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400)
-$text-font-family: "PT Serif",Georgia,"Times New Roman",serif
-$special-font-family: "PT Sans",Helvetica,Arial,sans-serif
-
 @import "compass/css3/border-radius"
+
+@import "fonts"
 
 =invisible-links
     a
@@ -14,9 +12,8 @@ $special-font-family: "PT Sans",Helvetica,Arial,sans-serif
         &:hover
             text-decoration: underline
 
-
 body
-    font-family: $text-font-family
+    +serif-font
     color: #515151
     font-size: 20px
     line-height: 30px
@@ -25,7 +22,7 @@ body
 h1, h2, h3, h4, h5
     color: #313131
     font-weight: 400
-    font-family: $special-font-family
+    +sans-serif-font
     letter-spacing: -0.025rem
     text-rendering: optimizelegibility
     margin-bottom: 10px
@@ -43,7 +40,7 @@ h2
     margin-top: 20px
 
 pre
-    font-family: Console, Monospaced, monospace
+    +monospaced-font
     font-size:  13px
     line-height:  20px
     font-weight:  200
@@ -130,7 +127,7 @@ code
     color: #BF616A
     background-color: #F9F9F9
     +border-radius(3px)
-    font-family: Console, Monospaced, monospace
+    +monospaced-font
     white-space: nowrap
 
 div.intro
