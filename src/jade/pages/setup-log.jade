@@ -61,7 +61,7 @@ url: "/setup.log"
     ```bash
     git clone https://github.com/atom/atom "${HOME}/var/src/atom"
     cd "${HOME}/var/src/atom"
-    git fetch -p
+    git fetch --prune
     git checkout $(git describe --tags \
         $(git rev-list --tags --max-count=1))
     ```
@@ -79,15 +79,17 @@ url: "/setup.log"
     script/grunt install --install-dir "${HOME}/opt/atom"
 
     cd "${HOME}/bin"
-    ln -s ../opt/atom/bin/atom atom
-    ln -s ../opt/atom/bin/apm apm
+    ln --symbolic ../opt/atom/bin/atom atom
+    ln --symbolic ../opt/atom/bin/apm apm
     ```
 
     Cleanup
 
     ```bash
-    rm -rf "${HOME}/var/src/atom"
-    rm -rf "${HOME}/var/tmp/atom"
+    rm --recursive --force -- \
+        "${HOME}/var/src/atom"
+    rm --recursive --force -- \
+        "${HOME}/var/tmp/atom"
     cd
     ```
 
