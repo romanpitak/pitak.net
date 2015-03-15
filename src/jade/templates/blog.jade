@@ -2,8 +2,10 @@ extends ./_layout.jade
 
 mixin article(post)
     article
-        header: h1
-                a(href=post.url): != post.title
+        header
+            h1: a(href=post.url): != post.title
+            - var months = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+            .time #{post.published.getDate()} #{months[post.published.getMonth()]} #{post.published.getFullYear()}
         != post.perex
         a(href=post.url): != '...read more'
 
