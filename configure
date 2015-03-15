@@ -200,7 +200,7 @@ cat > Makefile <<MAKEFILE
 
 .PHONY: all css pages clean clean-html
 
-all: clean-html ${htmlDir} css ${jsDir}/main.js pages
+all: ${htmlDir} css ${jsDir}/main.js pages
 
 ${htmlDir}: ${assetsDir}
 	mkdir --parents \$@
@@ -208,6 +208,7 @@ ${htmlDir}: ${assetsDir}
 
 node_modules: package.json
 	${npmBin} install
+	@touch \$@
 
 pages: node_modules
 	${coffeeBin} ${jadeDir}/build.litcoffee
