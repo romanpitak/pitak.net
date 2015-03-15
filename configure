@@ -127,7 +127,8 @@ cat > package.json <<PACKAGE_JSON
         "js-yaml": "^3.1.0",
         "lodash.assign": "^2.4.1",
         "mkdirp": "*",
-        "minify": "*"
+        "minify": "*",
+        "watch": "^0.14.0"
     },
     "engines" : {
         "node": ">=0.11.12",
@@ -198,7 +199,7 @@ cat > Makefile <<MAKEFILE
 
 # ${doNotEditNotice}
 
-.PHONY: all css pages clean clean-html
+.PHONY: all css pages watch clean clean-html
 
 all: ${htmlDir} css ${jsDir}/main.js pages
 
@@ -231,5 +232,8 @@ clean: clean-html
 
 clean-html:
 	rm --recursive --force ${htmlDir}
+
+watch: node_modules
+	./node_modules/.bin/watch '\$(MAKE) all' src --wait=0
 
 MAKEFILE
