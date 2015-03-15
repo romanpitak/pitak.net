@@ -1,9 +1,13 @@
 doctype html
 html(lang="en")
     head
-        meta( http-equiv='content-type', content='text/html', charset='UTF-8')
+        meta(http-equiv='content-type', content='text/html', charset='UTF-8')
         block title
             title: != title
+        block gNoTranslate
+            meta(name='google', content='notranslate')
+        block author
+            meta(name='author', content='Roman Piták')
         link(rel='stylesheet', href='/main.css')
         link(rel='shortcut icon' href='/logo/32x32.png')
     body
