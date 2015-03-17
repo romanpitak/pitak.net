@@ -2,6 +2,23 @@
 
 Static files for [pitak.net](http://pitak.net)
 
+## Usage
+
+Build the `public` directory:
+
+    make
+
+For development, run:
+
+    make dev
+
+That will serve the public directory on `localhost:31415`,
+watch for changes in the source code and rebuild `public` when necessay.
+
+Watch and rebuild `public` without running the server:
+
+    make watch
+
 ## About this site
 
 Written in&nbsp;the&nbsp;[jade template engine](http://jade-lang.com)
