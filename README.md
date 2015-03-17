@@ -8,12 +8,10 @@ Build the `public` directory:
 
     make
 
-For development, run:
+Serve the public directory on `localhost:31415`,
+watch for changes in and rebuild `public` when necessary:
 
     make dev
-
-That will serve the public directory on `localhost:31415`,
-watch for changes in the source code and rebuild `public` when necessay.
 
 Watch and rebuild `public` without running the server:
 
