@@ -27,3 +27,7 @@ clean: clean-html
 
 watch: node_modules
 	./node_modules/.bin/watch '$(MAKE) all' src --wait=0
+
+dev:
+	./node_modules/.bin/http-server public -a localhost -p 31415 -i -c-1 &
+	$(MAKE) watch
