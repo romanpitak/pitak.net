@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>http://pitak.net/</loc>
+  <lastmod>2015-03-17T00:00:00+00:00</lastmod>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/</loc>
+  <lastmod>2015-03-15T00:00:00+00:00</lastmod>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>http://pitak.net/about/</loc>
+  <lastmod>2015-02-28T00:00:00+00:00</lastmod>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2015/03/01/jade-with-pygments/</loc>
+  <lastmod>2015-03-01T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2015/02/24/standing-desk/</loc>
+  <lastmod>2015-02-24T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2015/02/20/regexp-prime-checker/</loc>
+  <lastmod>2015-02-20T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2014/11/27/volume-control-keyboard-shortcuts/</loc>
+  <lastmod>2015-01-20T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2014/11/20/canon-printer-department-id-job-accounting/</loc>
+  <lastmod>2014-11-20T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2014/11/12/why-the-long-options/</loc>
+  <lastmod>2014-11-29T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2014/11/03/change-magentos-contacts-page-url/</loc>
+  <lastmod>2014-11-03T08:28:58+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2014/10/31/setting-up-p4merge/</loc>
+  <lastmod>2014-11-20T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
+</url>
+</urlset>
