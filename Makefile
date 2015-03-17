@@ -1,4 +1,9 @@
 
+coffee = ./node_modules/.bin/coffee
+compass = compass
+watch = ./node_modules/.bin/watch
+serve = ./node_modules/.bin/http-server
+
 .PHONY: all css pages watch clean clean-html
 
 all: public css public/main.js pages
@@ -12,13 +17,13 @@ node_modules: package.json
 	@touch $@
 
 pages: node_modules
-	./node_modules/.bin/coffee src/jade/build.litcoffee
+	$(coffee) src/jade/build.litcoffee
 
 css: compass.rb
-	compass compile --config $<
+	$(compass) compile --config $<
 
 public/main.js: node_modules src/coffee/*
-	./node_modules/.bin/coffee --no-header --print --compile src/coffee > $@
+	$(coffee) --no-header --print --compile src/coffee > $@
 
 clean: clean-html
 	rm --recursive --force node_modules
@@ -26,8 +31,8 @@ clean: clean-html
 	rm --recursive --force public
 
 watch: node_modules
-	./node_modules/.bin/watch '$(MAKE) all' src --wait=0
+	$(watch) '$(MAKE) all' src --wait=0
 
 dev:
-	./node_modules/.bin/http-server public -a localhost -p 31415 -i -c-1 &
+	$(serve) public -a localhost -p 31415 -i -c-1 &
 	$(MAKE) watch
