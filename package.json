@@ -1,0 +1,19 @@
+{
+    "name": "pitak.net",
+    "description": "Home page of Roman Piták",
+    "dependencies": {
+        "jade": "^1.4.2",
+        "coffee-script": "*",
+        "marked": "*",
+        "js-yaml": "^3.1.0",
+        "lodash.assign": "^2.4.1",
+        "mkdirp": "*",
+        "minify": "*",
+        "watch": "^0.14.0"
+    },
+    "engines" : {
+        "node": ">=0.11.12",
+        "iojs": ">=1.0.0"
+    },
+    "private": true
+}

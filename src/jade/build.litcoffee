@@ -9,7 +9,15 @@ Load modules
     mkdirp = require('mkdirp').sync;
     jade = require 'jade'
     yaml = require 'js-yaml'
-    config = require './config'
+
+Temporary configuration (removing /configure)
+
+    config =
+        blogPath: 'src/jade/blog'
+        htmlPath: 'public'
+        pagesPath: 'src/jade/pages'
+        templatesPath: 'src/jade/templates'
+        pretty: true
 
 ### Markdown
 
