@@ -1,0 +1,169 @@
+---
+template: post
+title: "`make all`, not war"
+url: /blog/2015/03/15/make-all-not-war
+author: "Roman Piták"
+published: 2015-03-15
+last_modified: 2015-03-18
+perex: |
+    I've been doing a bit of front-end development lately.
+    I've spent some time using `grunt`, then `gulp`,
+    then both just to compare them.
+    Only to find out they both implement only a subset
+    of the capabilities of the standard GNU Make
+---
+:markdown
+    I've been doing a bit of front-end development lately.
+    I've spent some time using `grunt`, then `gulp`,
+    then both just to compare them.
+    Only to find out they both implement only a subset
+    of the capabilities of the standard
+    [GNU Make](http://www.gnu.org/software/make/).
+    
+    I was struck by the need to run multiple commands to build a simple web page,
+    when complicated software can usually be built using just `./configure && make`.
+    Why reinvent the wheel, when `make` can do all the work and more?
+    Makefiles have been around for almost four decades now
+    and they have proven time and again to be up to the task. 
+    
+    I talked to some colleagues about using make. 
+    I was offered arguments about the amazing capabilities of
+    `grunt` and `gulp`. Watching directories for changes.
+    Serving content and automatically refreshing browser pages on change.
+    All this and many more magical things can be done in `make`.
+    
+    ## A very brief introduction
+    
+    You can learn the basic `make` syntax in an hour.
+    From there, [SO](http://stackoverflow.com/tags/make) offers thousands of answers
+    and [the GNU Make manual](http://www.gnu.org/software/make/manual/make.html)
+    covers the rest. 
+    It is out of scope of this article to teach you `make`,
+    but the following should be enough to get you through the examples.
+    
+    The building blocks of a `Makefile` are rules. 
+    A simple rule may look like this:
+    
+    ```make
+    node_modules: package.json
+        npm install
+    ```
+    
+    A rule consists of a **target** (`node_modules`),
+    **dependencies** (`package.json`)
+    and the **recipe** to build the target (`npm install`).
+    
+    Make also provides you with some helpful built in variables.
+    The `$@` variable, for example, holds the name of the current target. 
+    
+    ## My frontend building snippets
+    
+    Install `npm` packages.
+    
+    ```make
+    node_modules: packages.json
+        npm install
+        @mkdir -p $@
+        @touch $@
+    ```
+    
+    Install `bower` packages.
+    
+    ```make
+    bower_components: bower.json
+        bower install
+        @mkdir -p $@
+        @touch $@
+    ```
+    
+    Build the `main.css` file.
+    
+    ```make
+    style = src/main.sass
+    sassmixins = src/mixins/*.sass
+    public/main.css: $(style) $(sassmixins)
+        sass $< >$@
+    ```
+    
+    Build the `index.html` file
+    
+    ```make
+    semantics = src/index.jade
+    data      = src/config.yaml
+    renderer  = bin/site-builder.litcoffee
+    public/index.html: $(semantics) $(data)
+        coffee $(renderer) -- $(semantics) $(data) $@
+    ```
+    
+    Watch for changes in the `src` directory and rebuild when necessary.
+    
+    ```make
+    watch: node_modules
+        ./node_modules/.bin/watch '$(MAKE) all' src
+    ```
+    
+    Serve the contents of the `public` directory on `localhost:8080`.
+    Watch for changes and rebuild in the background.
+    
+    ```make
+    serve: node_modules
+        $(MAKE) watch &
+        ./node_modules/.bin/http-server public -p 8080
+    ```
+    
+    ## Usage
+    
+    When you're finished, you can build your whole app with just one command,
+    
+    ```sh
+    make
+    ```
+    
+    , instead of (our previous building sequence):
+    
+    ```sh
+    composer install
+    npm install
+    bower install
+    grunt
+    ```
+    
+    This becomes even more important when you pull your coworkers changes.
+    You don't need to rerun everything or select what to rebuild based on the changes.
+    Make does that for you. Not only for the frontend, but for the full stack.
+    
+    You also don't need special plugins for basic operations you did on the command line.
+    A Makefile brings order into the myriad of building steps.
+    An if you still want to use `whatever` in your building process, you can.
+    With `make` you can incorporate it into the fullstack build with ease.
+    
+    ## Disadvantages
+    
+    Make is a very powerful tool, but - as with all - there are drawbacks.
+    My only issue is that it requires the use of tabs.
+    This doesn't go well with some modern IDEs that sometimes keep replacing them with spaces.
+    
+    There are other articles focusing on the flaws of `make`.
+    My conclusion from them is that the advantages greatly outbalance the flaws.
+    If you are interested in a quite exhausting listing, here is one:
+    [What’s Wrong With GNU make?](http://www.conifersystems.com/whitepapers/gnu-make/).
+    
+    ## Conclusions
+    
+    I love `make`.
+    Whenever I look at source codes,
+    I - and many others - first look for a `Makefile` to make sense of it all. 
+    It gives me a solid overview of how the project gets build.
+    It's a good friend in the darkness that is the source code.
+    
+    It's ... my precious ...
+    
+blockquote
+    p: center.
+        One #[code make] to rule them all, One #[code make] to find them,
+        One #[code make] to build them all and into full stack bind them.
+
+    
+    
+    
+    
