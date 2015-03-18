@@ -2,7 +2,7 @@
 <urlset
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://pitak.net/</loc>
@@ -18,6 +18,11 @@
   <loc>http://pitak.net/about/</loc>
   <lastmod>2015-02-28T00:00:00+00:00</lastmod>
   <priority>0.9</priority>
+</url>
+<url>
+  <loc>http://pitak.net/blog/2015/03/15/make-all-not-war/</loc>
+  <lastmod>2015-03-18T00:00:00+00:00</lastmod>
+  <priority>0.8</priority>
 </url>
 <url>
   <loc>http://pitak.net/blog/2015/03/01/jade-with-pygments/</loc>
