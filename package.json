@@ -4,7 +4,7 @@
     "dependencies": {
         "jade": "^1.4.2",
         "coffee-script": "*",
-        "marked": "*",
+        "pfm": "*",
         "js-yaml": "^3.1.0",
         "lodash.assign": "^2.4.1",
         "mkdirp": "*",

@@ -9,6 +9,7 @@ Load modules
     mkdirp = require('mkdirp').sync;
     jade = require 'jade'
     yaml = require 'js-yaml'
+    pfm = require 'pfm'
 
 Temporary configuration (removing /configure)
 
@@ -21,38 +22,7 @@ Temporary configuration (removing /configure)
 
 ### Markdown
 
-Add custom markdown parser
-with custom code parsing function
-that highlights with Pygments
-
-Further reading:
-
-- [Marked overriding-renderer-methods](https://www.npmjs.com/package/marked#overriding-renderer-methods)
-- [Node child_process.execSync](http://nodejs.org/docs/v0.12.0/api/child_process.html#child_process_child_process_execsync_command_options)
-- [Jade How to define/install custom filter?](https://github.com/jadejs/jade/issues/1055)
-- [Pygments lexers](http://pygments.org/docs/lexers/)
-
-**note**: We are overriding `renderer.code`
-instead of `renderer.options.highlight`
-because it wraps the highlihter result in unnecessary `<pre><code>`.
-
-**note**: Since Jade doesn't support async filters,
-we have to use `child_process.execSync`.
-This requires Node >= 0.11.12
-
-    execSync = (require 'child_process').execSync
-    marked = require 'marked'
-
-    renderer = new marked.Renderer
-    renderer.code = (code, lexer = 'text') ->
-        result = execSync "pygmentize -l #{lexer} -f html",
-            input: code
-        return result.toString()
-
-    marked.setOptions
-        renderer: renderer
-
-    jade.filters.markdown = marked
+    jade.filters.markdown = pfm
 
 ### Template loader
 
